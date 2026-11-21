@@ -63,7 +63,7 @@ def predict_sales():
 
     except Exception as e:
         print("❌ Error during prediction:", str(e))
-        return jsonify({'error': f"Prediction failed: {str(e)}"}), 500
+        return jsonify({'error': f"Prediction failed: {str(e)}"}, 500
 
 # Run the app (for local testing only)
 if __name__ == '__main__':
