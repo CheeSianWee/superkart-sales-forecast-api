@@ -13,7 +13,7 @@ CORS(superkart_api)
 model = joblib.load("/content/drive/My Drive/Colab Notebooks/Project 7/deployment_files/superkart_sales_forecast_model_v1_0.joblib")
 
 # Health check route
-@superkart_api.get('/')
+@superkart_sales_forecaster_api.get('/')
 def home():
   """
     This function handles GET requests to the root URL ('/') of the API.
@@ -22,8 +22,14 @@ def home():
     return "✅ Welcome to the SuperKart Sales Prediction API"
 
 # Prediction route
-@superkart_api.post('/v1/predict')
+@superkart_sales_forecaster_api.post('/v1/predict')
 def predict_sales():
+    """
+    This function handles POST requests to the '/v1/predict' endpoint.
+    It expects a JSON payload containing product and store attributes and returns
+    the forecasted sales as a JSON response.
+    """
+
     try:
         # Parse JSON payload
         data = request.get_json()
